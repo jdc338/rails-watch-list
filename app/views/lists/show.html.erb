@@ -1,4 +1,15 @@
-<div class="container"></div>
+<div class="container">
   <h1> Here are the movies on your <%= @list.name %> list </h1>
 
-  <%= link_to "Create new Bookmark!", new_list_bookmark_path(@list) %>
+  <ul>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li>
+        <h4><%=bookmark.movie.title%></h4>
+        <h6><%= bookmark.comment %></h6>
+        <%= link_to "Delete Bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-proimary" %>
+      </li>
+    <% end %>
+  </ul>
+
+        <%= link_to "Create new Bookmark!", new_list_bookmark_path(@list) %>
+</div>

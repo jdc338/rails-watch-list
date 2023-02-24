@@ -1,12 +1,21 @@
-<h1>
-All Lists
-</h1>
+ <div class="container">
+  <h1 class="text-center">
+  All Lists
+  </h1>
+    <%= link_to "Create new List!", new_list_path, class: "btn btn-primary text-center" %>
+  <p></p>
+  <p></p>
 
-<%= link_to "Create new List!", new_list_path %>
+  <ul>
 
+    <% @lists.each do |list| %>
+      <ol>
+      <div class="card">
+        <div class="card-header p-3 m-3">
+            <div class="card-body">
+              <h4><%= link_to list.name, list_path(list.id)  %></h4>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list.id) %></li>
-  <% end %>
-</ul>
+      </ol>
+
+    <% end %>
+</div>
